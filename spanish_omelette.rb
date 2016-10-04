@@ -114,8 +114,23 @@ end
 #Asking User if ready for next Step
 
 def ask_if_ready(step, index)
-  puts "are you ready for step #{index + 1}?\n (#{steps[:description]})"
-  answer= gets.chomp.
+  puts "Are you ready for step #{index + 1}?\n(#{step[:description]})"
+  answer = gets.chomp
 
-  answer.upcase =="Y"
+  answer.upcase == 'Y'
+end
+
+#iterating throug each of the steps
+
+steps.each_with_index do |step, index|
+print_divider
+
+loop do
+  ready = ask_if_ready(step, index)
+  break if ready
+
+  puts "O,K,I will give you some extra time."
+  print_progress_bar
+end
+send(step[:action])
 end
