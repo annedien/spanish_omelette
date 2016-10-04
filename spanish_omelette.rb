@@ -64,4 +64,9 @@ steps=[
   { description: "Cook a few more minutes and slide on to a plate and cool for 10 minutes before serving", action: "generic_recipe_step" }
 ]
 
-]
+#printing out the Steps
+print_divider
+puts "See below the different steps to follow:"
+
+steps.each_with_index do |step, index| puts (index+1).to_s + ")"+ step[:description]
+end
