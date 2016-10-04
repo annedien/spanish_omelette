@@ -117,7 +117,7 @@ def ask_if_ready(step, index)
   puts "Are you ready for step #{index + 1}?\n(#{step[:description]})"
   answer = gets.chomp
 
-  answer.upcase == 'Y'
+  answer.upcase == 'Y' #if answer equals to yes...(if true)
 end
 
 #iterating throug each of the steps
@@ -126,11 +126,14 @@ steps.each_with_index do |step, index|
 print_divider
 
 loop do
-  ready = ask_if_ready(step, index)
-  break if ready
+  ready = ask_if_ready(step, index) #stores true into ready
+  break if ready #break if true
 
   puts "O,K,I will give you some extra time."
   print_progress_bar
 end
 send(step[:action])
 end
+
+print_divider
+puts "Listo! Enjoy your meal!"
